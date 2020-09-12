@@ -6196,6 +6196,14 @@ button.bg-dark:focus {
 .mx-5 {
   margin-left: 3rem !important; }
 
+.mt-6,
+.my-6 {
+  margin-top: 5rem !important; }
+
+.mb-6,
+.my-6 {
+  margin-bottom: 5rem !important; }
+
 .p-0 {
   padding: 0 !important; }
 
@@ -7574,6 +7582,10 @@ h1, h2, h3, h4, h5,
   .owl-carousel:hover .owl-nav .owl-next {
     right: -20px; }
 
+.portfolio-text {
+  font-weight: 400;
+}
+
 .owl-custom-nav {
   float: right;
   position: relative;
@@ -7905,6 +7917,12 @@ h1, h2, h3, h4, h5,
   @media (max-width: 767.98px) {
     .block-3 .image {
       height: 300px; } }
+
+.shadowed {
+  -webkit-box-shadow: 20px 20px 0 0 #fce7f1;
+  box-shadow: 20px 20px 0 0 #fce7f1;
+  margin-bottom: 30px;
+}
 
 .block-5 {
   overflow: hidden;

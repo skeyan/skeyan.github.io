@@ -47,6 +47,12 @@ strong.tools {
     background: rgb(221, 245, 224);
 }
 
+strong.roles {
+    font-weight: 700;
+    color: #fd7da4;
+    background: #fdeaed;
+}
+
 h4.resume-title {
     color: white;
     font-size: 3rem;
@@ -63,4 +69,11 @@ p.resume-text {
 
 p.float-right {
     color: white;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
 }
