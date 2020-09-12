@@ -8113,9 +8113,12 @@ textarea.form-control {
 .ftco-bg-dark {
   background: #3c312e; }
 
+.ftco-bg-pref {
+  background: #3b3b3b; }
+
 .ftco-footer {
   font-size: 16px;
-  background: #ee76ad;
+  /* background: #ee76ad; */
   padding: 12em 0 8em 0; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;
