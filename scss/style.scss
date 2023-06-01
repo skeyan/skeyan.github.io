@@ -56,7 +56,6 @@ body {
 	}
 }
 a {
-	transition: .3s all ease;
 	color: $primary;
 	&:hover {
 		text-decoration: none;
@@ -90,7 +89,7 @@ h1, h2, h3, h4, h5,
 	.navbar-brand {
 		color: $white;
 	}
-	
+
 	.navbar-nav {
 		> .nav-item {
 			> .nav-link {
@@ -115,7 +114,7 @@ h1, h2, h3, h4, h5,
 				box-shadow: 0px 10px 34px -20px rgba(0,0,0,0.41);
 			}
 
-			
+
 			&.ftco-seperator {
 				position: relative;
 				margin-left: 20px;
@@ -159,7 +158,7 @@ h1, h2, h3, h4, h5,
 			}
 			&.active {
 				> a {
-					color: rgba(255,255,255,.5);
+					color: rgba(255,255,255,1);
 				}
 			}
 		}
@@ -173,7 +172,7 @@ h1, h2, h3, h4, h5,
 		font-size: 16px;
 		letter-spacing: .1em;
 	}
-	
+
 	&.scrolled  {
 		position: fixed;
 		right: 0;
@@ -252,7 +251,7 @@ h1, h2, h3, h4, h5,
 			transition: .3s all ease-out;
 		}
 		&.sleep {
-			transition: .3s all ease-out;	
+			transition: .3s all ease-out;
 		}
 
 		.navbar-brand {
@@ -347,7 +346,7 @@ h1, h2, h3, h4, h5,
 		font-weight: 700 !important;
 	}
 	.btn-primary{
-		border: 1px solid rgba(255,255,255,.4);
+		background: $white !important;
 		@include border-radius(30px);
 		&:hover, &:focus{
 			background: $white !important;
@@ -365,7 +364,7 @@ h1, h2, h3, h4, h5,
 			opacity: 1;
 		}
 	}
-	
+
 	.owl-nav {
 		position: absolute;
 		top: 50%;
@@ -433,7 +432,7 @@ h1, h2, h3, h4, h5,
 		text-align: center;
 		display: inline-block;
 	}
-} 
+}
 
 
 .bg-light {
@@ -454,12 +453,13 @@ h1, h2, h3, h4, h5,
 		outline: none;
 	}
 	&.btn-primary {
-		background: lighten($primary,25%);
+		// background: lighten($primary,25%);
+		background: white;
 		border: 2px solid lighten($primary,25%);
 		color: $primary;
 		&:hover {
 			border: 2px solid $primary;
-			background: transparent;
+			// background: transparent;
 			color :$primary;
 		}
 		&.btn-outline-primary {
@@ -729,7 +729,8 @@ h1, h2, h3, h4, h5,
 		background-position: center center;
 		position: relative;
 		padding: 10em 0;
-		@include gradient-background();
+		background: white;
+		// @include gradient-background();
 	}
 	.heading-section-white{
 		h2{
@@ -750,7 +751,7 @@ h1, h2, h3, h4, h5,
 		display: block;
 		@include media-breakpoint-up(md) {
 			width: 50%;
-			padding: 10% 7%;	
+			padding: 10% 7%;
 		}
 	}
 	.text {
@@ -840,7 +841,7 @@ h1, h2, h3, h4, h5,
 			left: 0;
 			right: 0;
 			z-index: 1;
-			background: $white;	
+			background: $white;
 			visibility: hidden;
 			opacity: 0;
 			height: 0;
@@ -892,7 +893,7 @@ h1, h2, h3, h4, h5,
 	}
 	&:hover, &:focus {
 		.text {
-			
+
 			&:before {
 				visibility: visible;
 				opacity: 1;
@@ -902,7 +903,7 @@ h1, h2, h3, h4, h5,
 			.heading, .subheading, .post-meta, .price, .star-rate {
 				color: $black;
 			}
-			
+
 		}
 	}
 }
@@ -995,7 +996,7 @@ textarea.form-control {
 				border: 2px solid $black;
 			}
 		}
-		
+
 	}
 }
 
@@ -1099,7 +1100,7 @@ textarea.form-control {
 		color: rgba($white, .7);
 	}
 	a {
-		color: rgba($white, .7);
+		color: rgba($white, 1);
 		&:hover {
 			color: $white;
 		}
@@ -1341,9 +1342,9 @@ textarea.form-control {
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
   -webkit-backface-visibility: hidden;
-  -webkit-transition: all 0.3s ease-out; 
-  -moz-transition: all 0.3s ease-out; 
-  -o-transition: all 0.3s ease-out; 
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
@@ -1354,7 +1355,7 @@ textarea.form-control {
     opacity: 0.8;
 }
 
-.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing .mfp-container,
 .mfp-with-zoom.mfp-removing.mfp-bg {
   opacity: 0;
 }
@@ -1395,7 +1396,7 @@ textarea.form-control {
 	}
 }
 
-//blocks 
+//blocks
 .block-20 {
 	overflow: hidden;
 	background-size: cover;
@@ -1475,9 +1476,9 @@ textarea.form-control {
 			font-size: 16px;
 		}
 	}
-} 
+}
 
-//### .block-10 
+//### .block-10
 .block-10 {
 	.chef-img{
 		height: 400px;
@@ -1591,7 +1592,7 @@ textarea.form-control {
 	}
 }
 
-//### .block-18 
+//### .block-18
 .block-18 {
 	.icon, .text {
 	}
@@ -1666,7 +1667,7 @@ textarea.form-control {
 		display: block;
 		sup {
 			font-size: 20px;
-			top: -2em; 
+			top: -2em;
 		}
 		.number {
 			font-size: 80px;
@@ -1732,14 +1733,14 @@ textarea.form-control {
 				&[aria-expanded="false"] {
 					&:before {
 						content: "\e313";
-						color: #ccc;	
+						color: #ccc;
 						font-family: 'icomoon';
 						position: absolute;
-				
+
 						transition: .3s all ease;
 					}
 				}
-				
+
 			}
 		}
 		.body-text {
@@ -1757,7 +1758,7 @@ textarea.form-control {
 			padding-bottom: 2em;
 		}
 		.owl-item {
-			box-shadow: 0 7px 20px -5px rgba(0,0,0,.2);	
+			box-shadow: 0 7px 20px -5px rgba(0,0,0,.2);
 		}
 		.owl-nav {
 			z-index: 2;
@@ -1801,7 +1802,7 @@ textarea.form-control {
 				margin-bottom: 10px;
 				transition: .3s all ease;
 				&.active {
-					
+
 					background: $primary;
 				}
 			}
@@ -1909,7 +1910,7 @@ textarea.form-control {
 				&:hover, &:focus {
 					color: $white;
 				}
-			}	
+			}
 		}
 	}
 	.prev {
@@ -2070,9 +2071,9 @@ textarea.form-control {
 	padding: 25px;
 	font-size: 15px;
 	width: 100%;
-	
+
 	float: left;
-	
+
 	background: $white;
 	*:last-child {
 		margin-bottom: 0;
@@ -2125,7 +2126,7 @@ textarea.form-control {
 	background-color: rgba(255,255,255,0.9);
 	box-shadow: 0px 24px 64px rgba(0,0,0,0.24);
 	border-radius:16px;
-	opacity: 0; 
+	opacity: 0;
 	visibility: hidden;
 	transition: opacity .2s ease-out, visibility 0s linear .2s;
 	z-index:1000;

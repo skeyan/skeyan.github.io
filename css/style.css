@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
+  --my-dark-grey: rgb(60, 38, 42);
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -31,9 +32,9 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Work Sans", -apple-system, BlinkMacSystemFont,
+  --font-family-sans-serif: "Poppins", "Work Sans", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+    "Segoe UI Emoji", "Segoe UI Symbol" !important;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
@@ -46,7 +47,7 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif !important;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -80,9 +81,11 @@ section {
 
 body {
   margin: 0;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  /* font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+    "Segoe UI Emoji", "Segoe UI Symbol"; */
+  font-family: "Poppins", sans-serif !important;
+  letter-spacing: 1px !important;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -2612,7 +2615,7 @@ select.form-control-lg:not([size]):not([multiple]),
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out,
+  /* -webkit-transition: color 0.15s ease-in-out,
     background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -2623,7 +2626,7 @@ select.form-control-lg:not([size]):not([multiple]),
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-    -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-box-shadow 0.15s ease-in-out; */
 }
 @media screen and (prefers-reduced-motion: reduce) {
   .btn {
@@ -2762,6 +2765,86 @@ fieldset:disabled a.btn {
 .show > .btn-success.dropdown-toggle:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+/* CUSTOM */
+.about-details {
+  display: flex;
+}
+
+.skills-bubble-wrapper {
+  flex-wrap: wrap;
+  display: flex;
+  gap: 12px;
+}
+
+.skills-floaty {
+  margin-right: 20px;
+  padding: 15px;
+  background-color: rgb(255, 236, 230);
+  color: black;
+  font-weight: 400;
+  font-size: 0.9rem;
+  border-radius: 20px;
+}
+
+.about-details-col-text a {
+  text-decoration: underline;
+}
+
+.about-details-col {
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+
+.about-details-col-header {
+  color: var(--my-dark-grey);
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+}
+
+.about-details-col-text {
+  text-align: left;
+  color: var(--my-dark-grey);
+  width: 80%;
+}
+
+h2.section-header-text#about {
+  font-weight: bold !important;
+  font-size: 3rem !important;
+}
+
+.section-header-text::before {
+  content: "";
+  width: 2.6rem;
+  height: 0.7rem;
+  border-radius: 1rem;
+  background-color: #fae161;
+}
+
+#projects {
+  background-color: rgb(252, 252, 252);
+}
+
+.my-btn {
+  position: relative;
+  width: 300px;
+  background-color: white;
+  padding: 15px 20px;
+  font-size: 1rem;
+  font-weight:bold;
+  border-radius: 30px;
+  top: 30px;
+}
+
+.my-btn:hover, .my-btn:focus {
+  cursor: pointer;
+  background-color: var(--my-dark-grey);
+  color: white;
 }
 
 .btn-info {
@@ -9629,7 +9712,8 @@ h5,
   border-color: #ee76ad;
 }
 .ftco-navbar-light .navbar-nav > .nav-item.active > a {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 1.0);
+  font-weight:bold;
 }
 .ftco-navbar-light .navbar-toggler {
   border: none;
@@ -9728,6 +9812,12 @@ h5,
   text-transform: uppercase;
 }
 
+.hero-text {
+  font-weight: 300;
+  text-align: left;
+  color: white;
+}
+
 .hero-wrap {
   width: 100%;
   height: 100%;
@@ -9779,7 +9869,7 @@ h5,
   font-size: 55px;
   color: #fff;
   line-height: 1.2;
-  font-weight: 200;
+  font-weight: 270;
 }
 @media (max-width: 991.98px) {
   .slider-text h1 {
@@ -10228,19 +10318,20 @@ h5,
   background-position: center center;
   position: relative;
   padding: 10em 0;
-  background: #ee76ad;
+  background: whitesmoke;
+  /* background: #ee76ad;
   background: -moz-linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
   background: -webkit-gradient(
     left bottom,
     right top,
     color-stop(0%, #ee76ad),
-    color-stop(100%, #efac78)
-  );
-  background: -webkit-linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
+    color-stop(100%, #efac78) */
+  /* ); */
+  /* background: -webkit-linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
   background: -o-linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
   background: -ms-linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
   background: linear-gradient(45deg, #ee76ad 0%, #efac78 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#448ef6', endColorstr='#af05a9', GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#448ef6', endColorstr='#af05a9', GradientType=1 ); */
 }
 .ftco-section-parallax .heading-section-white h2 {
   font-weight: 400 !important;
