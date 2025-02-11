@@ -2,6 +2,7 @@ class Navbar {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
         this.currentPath = window.location.pathname;
+        this.isHomePage = this.currentPath === '/' || this.currentPath.endsWith('index.html');
         this.render();
         this.initScrollspy();
         this.attachEventListeners();
@@ -20,7 +21,7 @@ class Navbar {
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a href="#page-top" class="nav-link">Home</a>
+                                <a href="${this.isHomePage ? '#page-top' : '/'}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#about" class="nav-link">About</a>
@@ -79,7 +80,7 @@ class Navbar {
                 if (target.length) {
                     $('html, body').animate({
                         scrollTop: (target.offset().top - 100)
-                    }, 1000, 'easeInOutExpo');
+                    }, 500, 'easeInOutExpo');
                     
                     // Close mobile menu if open
                     if ($('.navbar-toggler').is(':visible') && $('.navbar-collapse').hasClass('show')) {
@@ -87,6 +88,14 @@ class Navbar {
                     }
                 }
             });
+
+            // Handle home link on non-homepage
+            if (!this.isHomePage) {
+                $('#ftco-nav a[href="/"]').on('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = '/';
+                });
+            }
         });
 
         // Navbar scroll behavior
