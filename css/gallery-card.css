@@ -1,74 +1,59 @@
 .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .gallery-card {
-    perspective: 1000px;
-    height: 400px;
-    cursor: pointer;
-}
-
-.gallery-card__inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-
-.gallery-card:hover .gallery-card__inner {
-    transform: rotateY(180deg);
-}
-
-.gallery-card__front,
-.gallery-card__back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.gallery-card__front {
-    background-color: #f8f9fa;
-}
-
-.gallery-card__back {
-    background-color: #2c3e50;
-    color: white;
-    transform: rotateY(180deg);
-    padding: 2rem;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.gallery-card__image-container {
+    flex: 0 0 40%;
+    position: relative;
+    overflow: hidden;
 }
 
 .gallery-card__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-card:hover .gallery-card__image {
+    transform: scale(1.05);
+}
+
+.gallery-card__content {
+    flex: 0 0 60%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .gallery-card__title {
     font-size: 1.5rem;
+    color: #2c3e50;
     margin-bottom: 1rem;
-    color: white;
 }
 
 .gallery-card__description {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    color: #4a5568;
     line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
 .gallery-card__tags {
@@ -76,11 +61,11 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
-    justify-content: center;
 }
 
 .gallery-card__tag {
-    background-color: rgba(255,255,255,0.1);
+    background-color: #f1f5f9;
+    color: #475569;
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
     font-size: 0.875rem;
@@ -89,9 +74,11 @@
 .gallery-card__links {
     display: flex;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .gallery-card__link {
+    display: inline-block;
     padding: 0.5rem 1rem;
     background-color: #3498db;
     color: white;
@@ -103,40 +90,12 @@
 .gallery-card__link:hover {
     background-color: #2980b9;
     color: white;
+    text-decoration: none;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    .gallery-container {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 1rem;
-    }
-
-    .gallery-card {
-        height: 350px;
-    }
-
-    .gallery-card__back {
-        padding: 1.5rem;
-    }
-
-    .gallery-card__title {
-        font-size: 1.25rem;
-    }
-
-    .gallery-card__description {
-        font-size: 0.875rem;
-    }
-
-    /* For mobile, we can make it click/tap based instead of hover */
-    .gallery-card:hover .gallery-card__inner {
-        transform: none;
-    }
-
-    .gallery-card.active .gallery-card__inner {
-        transform: rotateY(180deg);
-    }
+.gallery-card__link:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
 }
 
 /* Animation classes */
@@ -149,4 +108,71 @@
 .gallery-card.ftco-animated {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .gallery-card {
+        flex-direction: column;
+    }
+
+    .gallery-card__image-container {
+        flex: 0 0 200px;
+    }
+
+    .gallery-card__content {
+        flex: 1;
+    }
+
+    .gallery-card__title {
+        font-size: 1.25rem;
+    }
+
+    .gallery-card__description {
+        font-size: 0.875rem;
+    }
+
+    .gallery-card__links {
+        flex-wrap: wrap;
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .gallery-card {
+        border: 2px solid #000;
+    }
+
+    .gallery-card__tag {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .gallery-card__link {
+        background-color: #000;
+        border: 2px solid #000;
+    }
+
+    .gallery-card__link:hover,
+    .gallery-card__link:focus {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-card,
+    .gallery-card__image,
+    .gallery-card__link {
+        transition: none;
+    }
+
+    .gallery-card:hover {
+        transform: none;
+    }
+
+    .gallery-card:hover .gallery-card__image {
+        transform: none;
+    }
 }

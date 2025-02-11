@@ -12,26 +12,40 @@ class GalleryCard {
 
     createCard(project) {
         return `
-            <div class="gallery-card ftco-animate">
-                <div class="gallery-card__inner">
-                    <div class="gallery-card__front">
-                        <img src="${project.image}" alt="${project.title}" class="gallery-card__image">
+            <article class="gallery-card ftco-animate">
+                <div class="gallery-card__image-container">
+                    <img 
+                        src="${project.image}" 
+                        alt="${project.title}" 
+                        class="gallery-card__image"
+                    >
+                </div>
+                <div class="gallery-card__content">
+                    <h3 class="gallery-card__title">${project.title}</h3>
+                    <p class="gallery-card__description">${project.description}</p>
+                    <div class="gallery-card__tags" aria-label="Technologies used">
+                        ${project.tags.map(tag => 
+                            `<span class="gallery-card__tag">${tag}</span>`
+                        ).join('')}
                     </div>
-                    <div class="gallery-card__back">
-                        <h3 class="gallery-card__title">${project.title}</h3>
-                        <p class="gallery-card__description">${project.description}</p>
-                        <div class="gallery-card__tags">
-                            ${project.tags.map(tag => `<span class="gallery-card__tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="gallery-card__links">
-                            ${project.demoUrl ? 
-                                `<a href="${project.demoUrl}" target="_blank" class="gallery-card__link">Live Demo</a>` : ''}
-                            ${project.githubUrl ? 
-                                `<a href="${project.githubUrl}" target="_blank" class="gallery-card__link">GitHub</a>` : ''}
-                        </div>
+                    <div class="gallery-card__links">
+                        ${project.demoUrl ? 
+                            `<a href="${project.demoUrl}" 
+                                target="_blank" 
+                                class="gallery-card__link"
+                                aria-label="View Live Demo">
+                                Live Demo
+                            </a>` : ''}
+                        ${project.githubUrl ? 
+                            `<a href="${project.githubUrl}" 
+                                target="_blank" 
+                                class="gallery-card__link"
+                                aria-label="View Source Code on GitHub">
+                                GitHub
+                            </a>` : ''}
                     </div>
                 </div>
-            </div>
+            </article>
         `;
     }
 
