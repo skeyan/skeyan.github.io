@@ -132,6 +132,7 @@ class Hero {
                                 a software engineer with a passion for interactive
                                 media of all kinds!
                             </h1>
+                            <p class="hero-desc">Currently at LinkedIn. Formerly at Holler, Cornell Tech.</p>
                             <p><a href="contact.html" class="my-btn">Get in touch</a></p>
                         </div>
                     </div>
