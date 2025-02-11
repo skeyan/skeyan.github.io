@@ -21,7 +21,7 @@ class Navbar {
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a href="${this.isHomePage ? '#page-top' : '/'}" class="nav-link">Home</a>
+                                <a href="${this.isHomePage ? '#' : '/'}" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#about" class="nav-link">About</a>
@@ -47,9 +47,6 @@ class Navbar {
         document.body.setAttribute('data-target', '#ftco-navbar');
         document.body.setAttribute('data-offset', '200');
 
-        // Add an ID to the top of the page for the home link
-        document.body.setAttribute('id', 'page-top');
-
         // Initialize scrollspy via jQuery
         $(document).ready(() => {
             $('body').scrollspy({
@@ -61,12 +58,6 @@ class Navbar {
             setTimeout(() => {
                 $('body').scrollspy('refresh');
             }, 1000);
-
-            // Fix for scrollspy not detecting the first section
-            const firstSection = $('#page-top');
-            if (firstSection.length && $(window).scrollTop() < 200) {
-                $('#ftco-navbar .nav-link[href="#page-top"]').addClass('active');
-            }
         });
     }
 
@@ -76,16 +67,26 @@ class Navbar {
             $('#ftco-nav a[href^="#"]').on('click', function(e) {
                 e.preventDefault();
                 
-                const target = $(this.hash);
-                if (target.length) {
+                const href = $(this).attr('href');
+                
+                if (href === '#') {
+                    // Smooth scroll to top for home link
                     $('html, body').animate({
-                        scrollTop: (target.offset().top - 100)
+                        scrollTop: 0
                     }, 500, 'easeInOutExpo');
-                    
-                    // Close mobile menu if open
-                    if ($('.navbar-toggler').is(':visible') && $('.navbar-collapse').hasClass('show')) {
-                        $('.navbar-toggler').trigger('click');
+                } else {
+                    // Smooth scroll to section
+                    const target = $(href);
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: (target.offset().top - 100)
+                        }, 500, 'easeInOutExpo');
                     }
+                }
+                
+                // Close mobile menu if open
+                if ($('.navbar-toggler').is(':visible') && $('.navbar-collapse').hasClass('show')) {
+                    $('.navbar-toggler').trigger('click');
                 }
             });
 
