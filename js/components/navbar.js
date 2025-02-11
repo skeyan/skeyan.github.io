@@ -1,22 +1,10 @@
-// navbar.js
 class Navbar {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
         this.currentPath = window.location.pathname;
         this.render();
+        this.initScrollspy();
         this.attachEventListeners();
-    }
-
-    isActive(path) {
-        // Handle index.html or / as home
-        if (path === 'index.html' || path === '/') {
-            return this.currentPath.endsWith('index.html') || this.currentPath === '/';
-        }
-        return this.currentPath.includes(path);
-    }
-
-    getNavLinkClass(path) {
-        return `nav-link${this.isActive(path) ? ' active' : ''}`;
     }
 
     render() {
@@ -32,16 +20,16 @@ class Navbar {
                     <div class="collapse navbar-collapse" id="ftco-nav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a href="index.html" class="${this.getNavLinkClass('index.html')}">Home</a>
+                                <a href="#page-top" class="nav-link">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#about" class="${this.getNavLinkClass('#about')}">About</a>
+                                <a href="#about" class="nav-link">About</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#projects" class="${this.getNavLinkClass('#projects')}">Projects</a>
+                                <a href="#projects" class="nav-link">Projects</a>
                             </li>
                             <li class="nav-item cta">
-                                <a href="contact.html" class="${this.getNavLinkClass('contact.html')}">Contact</a>
+                                <a href="contact.html" class="nav-link">Contact</a>
                             </li>
                         </ul>
                     </div>
@@ -52,8 +40,56 @@ class Navbar {
         this.container.innerHTML = template;
     }
 
+    initScrollspy() {
+        // Add necessary attributes to body
+        document.body.setAttribute('data-spy', 'scroll');
+        document.body.setAttribute('data-target', '#ftco-navbar');
+        document.body.setAttribute('data-offset', '200');
+
+        // Add an ID to the top of the page for the home link
+        document.body.setAttribute('id', 'page-top');
+
+        // Initialize scrollspy via jQuery
+        $(document).ready(() => {
+            $('body').scrollspy({
+                target: '#ftco-navbar',
+                offset: 200
+            });
+
+            // Refresh scrollspy after dynamic content loads
+            setTimeout(() => {
+                $('body').scrollspy('refresh');
+            }, 1000);
+
+            // Fix for scrollspy not detecting the first section
+            const firstSection = $('#page-top');
+            if (firstSection.length && $(window).scrollTop() < 200) {
+                $('#ftco-navbar .nav-link[href="#page-top"]').addClass('active');
+            }
+        });
+    }
+
     attachEventListeners() {
-        // Add scroll event listener for navbar styling
+        // Smooth scrolling for anchor links
+        $(document).ready(() => {
+            $('#ftco-nav a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                
+                const target = $(this.hash);
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: (target.offset().top - 100)
+                    }, 1000, 'easeInOutExpo');
+                    
+                    // Close mobile menu if open
+                    if ($('.navbar-toggler').is(':visible') && $('.navbar-collapse').hasClass('show')) {
+                        $('.navbar-toggler').trigger('click');
+                    }
+                }
+            });
+        });
+
+        // Navbar scroll behavior
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('ftco-navbar');
             if (navbar) {
@@ -69,28 +105,6 @@ class Navbar {
                     navbar.classList.remove('sleep');
                 }
             }
-        });
-
-        // Add smooth scrolling to nav links
-        document.querySelectorAll('#ftco-nav .nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active state for hash links
-                        document.querySelectorAll('#ftco-nav .nav-link').forEach(navLink => {
-                            navLink.classList.remove('active');
-                        });
-                        link.classList.add('active');
-                    }
-                }
-            });
         });
     }
 }
