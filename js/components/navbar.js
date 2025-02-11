@@ -29,6 +29,9 @@ class Navbar {
                             <li class="nav-item">
                                 <a href="#projects" class="nav-link">Projects</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="files/YanEva2025.pdf" target="_blank" class="nav-link">Resume</a>
+                            </li>
                             <li class="nav-item cta">
                                 <a href="contact.html" class="nav-link">Contact</a>
                             </li>
