@@ -1,6 +1,12 @@
 class Hero {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
+
+        if (!this.container) {
+            console.log(`Hero container #${containerId} not found, skipping initialization`);
+            return;
+        }
+        
         this.render();
         this.initFullHeight();
         
